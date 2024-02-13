@@ -1,0 +1,13 @@
+[package]
+name = "transparent_proxy"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "transparent_proxy"
+path = "main.rs"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+futures = "0.3"
+tokio = { version = "1", features = ["full"] }

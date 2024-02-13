@@ -1,0 +1,16 @@
+{
+	"fmt": {
+		"lineWidth": 140,
+		"semiColons": false,
+		"singleQuote": true,
+		"useTabs": true
+	},
+	"compilerOptions": {},
+	"lint": {
+		"rules": {
+			"include": [
+				"no-external-import"
+			]
+		}
+	}
+}
