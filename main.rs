@@ -12,8 +12,8 @@ use tokio::{
 #[derive(Debug, Parser)]
 struct CliParams {
 	/// The port to bind local connections to
-	#[arg(long, short = 'p', value_name = "PORT")]
-	port: u16,
+	#[arg(long, short = 'b', value_name = "PORT")]
+	bind: String,
 	/// Where to proxy connections to
 	#[arg(long, short = 'd', value_name = "ADDRESS")]
 	destination: String,
@@ -25,10 +25,9 @@ struct CliParams {
 #[tokio::main(flavor = "current_thread")]
 async fn main() {
 	let args = CliParams::parse();
-	let addr = format!("localhost:{}", &args.port);
 
-	let listener = TcpListener::bind(&addr).await.unwrap();
-	println!("Listening at {addr}");
+	let listener = TcpListener::bind(&args.bind).await.unwrap();
+	println!("Listening at {}", &args.bind);
 
 	let connections_count = Arc::new(RwLock::new(0));
 	let proxy_to = args.destination;
